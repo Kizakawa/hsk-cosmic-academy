@@ -1,16 +1,29 @@
-# 🛸 HSK Cosmic Academy — Full-Stack Gamified Mandarin Learning Platform (HSK 0–5)
+<div align="center">
 
-[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D22.5%20(Zero--Deps)-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![SQLite WAL](https://img.shields.io/badge/Database-SQLite%20(WAL%20Mode)-003B57?logo=sqlite&logoColor=white)](https://sqlite.org/)
-[![HTML5 Canvas](https://img.shields.io/badge/Engine-HTML5%20Canvas%2060FPS-E34F26?logo=html5&logoColor=white)](#)
-[![PWA Ready](https://img.shields.io/badge/PWA-Offline--First%20Service%20Worker-5A0FC8?logo=pwa&logoColor=white)](#)
-[![License: MIT](https://img.shields.io/badge/License-MIT-38bdf8.svg)](https://opensource.org/licenses/MIT)
+# 🛸 HSK Cosmic Academy — Hệ Thống Quản Lý Học Vụ, Luyện Tập Đa Kỹ Năng & Đồng Bộ Đám Mây
+### Full-Stack Gamified Learning Management System (HSK 0–5), SQLite WAL Database & Zero-Dependency Node.js Backend
 
-> **HSK Cosmic Academy** là nền tảng EdTech Full-Stack tích hợp **4 không gian học tiếng Trung toàn diện** từ con số 0 đến HSK 5: **(1) Bài giảng Chiết tự 28 Bộ thủ, Ngữ pháp & Hội thoại**, **(2) Phòng luyện 5 kỹ năng đa phương thức (Thẻ nhớ Anki SM-2, Tập viết chữ Hán ô chữ Điền chấm nét Pixel-Mask, Ghép cặp, Điền khuyết, Xếp câu & Chấm phát âm qua Mic)**, **(3) Game Bắn Từ Vựng Phản Xạ Vũ Trụ 60 FPS**, và **(4) Hệ thống Cloud Sync, Bảng xếp hạng & Chia sẻ học liệu cộng đồng**.
+[![Database](https://img.shields.io/badge/Database-SQLite_WAL_(5_Tables_Relational)-003B57?logo=sqlite&logoColor=white)](https://sqlite.org/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js_%3E%3D22.5_(Zero--Deps)-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![SRS Engine](https://img.shields.io/badge/Algorithm-Anki_SM--2_Spaced_Repetition-0A66C2)](#)
+[![HTML5 Canvas](https://img.shields.io/badge/Engine-HTML5_Canvas_60FPS-E34F26?logo=html5&logoColor=white)](#)
+[![PWA Ready](https://img.shields.io/badge/Deployment-Docker_%7C_Windows_Bat_%7C_PWA-2496ED?logo=docker&logoColor=white)](#)
+
+*Hệ thống quản lý học vụ và luyện tập tiếng Trung toàn diện (HSK 0 – HSK 5) kết hợp CSDL chuẩn hóa 930 mục từ vựng, thuật toán lập lịch ôn tập định kỳ Anki SM-2, đồng bộ dữ liệu hai chiều qua SQLite WAL, báo cáo thống kê tiến độ 7 ngày và đóng gói chạy ngay trên Windows / Docker.*
+
+[🎯 Điểm nhấn Kỹ thuật & Nghiệp vụ](#-điểm-nhấn-kỹ-thuật--sản-phẩm-key-engineering-highlights) •
+[💼 Điểm nhấn CSDL, BA & Triển khai](#-điểm-nhấn-năng-lực-thiết-kế-csdl-sql--phân-tích-nghiệp-vụ-ba--triển-khai) •
+[🏛️ Kiến trúc Hệ thống](#️-kiến-trúc-hệ-thống-system-architecture) •
+[🔌 Danh sách REST API](#-danh-sách-rest-api-endpoints) •
+[🚀 Hướng dẫn Cài đặt](#-hướng-dẫn-cài-đặt--chạy-dự-án-quick-start)
+
+</div>
 
 ---
 
 ## 🌟 Điểm Nhấn Kỹ Thuật & Sản Phẩm (Key Engineering Highlights)
+
+> **HSK Cosmic Academy** là nền tảng EdTech / LMS Full-Stack tích hợp **4 không gian nghiệp vụ học tập** từ con số 0 đến HSK 5: **(1) Bài giảng Chiết tự 28 Bộ thủ, Ngữ pháp & Hội thoại**, **(2) Phòng luyện 5 kỹ năng đa phương thức (Thẻ nhớ Anki SM-2, Tập viết chữ Hán ô chữ Điền chấm nét Pixel-Mask, Ghép cặp, Điền khuyết, Xếp câu & Chấm phát âm qua Mic)**, **(3) Game Bắn Từ Vựng Phản Xạ Vũ Trụ 60 FPS**, và **(4) Hệ thống Cloud Sync, Bảng xếp hạng & Chia sẻ học liệu cộng đồng**.
 
 | Hạng Mục | Thông Số / Kiến Trúc Thực Tế |
 | :--- | :--- |
@@ -21,6 +34,16 @@
 | **Chấm Viết Chữ Hán & Chấm Phát Âm** | Vẽ chữ Hán trên lưới **Ô Chữ Điền (田字格)** kèm thuật toán **Pixel-Mask IoU Overlap Grader** chấm điểm nét viết trực tiếp trên HTML5 Canvas; tích hợp **Web Speech Recognition (`zh-CN`)** chấm điểm phát âm bằng giọng nói |
 | **Hybrid Audio & TTS Proxy Cache** | Kết hợp **Web Audio API** (tổng hợp nhạc nền Ambient Sci-Fi & hiệu ứng Laser/Explosion procedural 0MB asset) với **Multi-Upstream TTS Proxy** (Youdao / Google TTS + SHA-1 Disk Cache + Service Worker Cache-First) |
 | **Kiểm Thử Tự Động (E2E & Turbo QA)** | Bộ kiểm thử E2E Full-Stack (`scripts/test_platform_e2e.js`) và **Turbo Game QA Suite (`window.GameQA`)** giả lập AI Auto-PlayBot & Time-Warp kiểm định toàn bộ 42 màn chơi trong `< 20ms` |
+
+---
+
+## 💼 Điểm Nhấn Năng Lực: Thiết Kế CSDL (SQL) • Phân Tích Nghiệp Vụ (BA) • Triển Khai
+
+| Góc Nhìn Đánh Giá | Giải Pháp Kỹ Thuật & Nghiệp Vụ Đã Triển Khai Trong Dự Án |
+| :--- | :--- |
+| **🗄️ Thiết Kế CSDL & Lập Trình SQL**<br>*(server/db.js — SQLite WAL)* | • **Lược đồ CSDL 5 Bảng Cốt lõi:** Quản lý `users` (hồ sơ học viên & băm mật khẩu PBKDF2), `sessions` (phiên đăng nhập Bearer Token), `user_state` (lưu trữ trạng thái tiến độ học tập, lịch ôn tập SM-2), `leaderboard` (chỉ số xếp hạng XP, Level, Streak, số từ thành thạo) và `community_decks` (bộ học liệu cộng đồng).<br>• **Truy vấn Tìm kiếm & Xếp hạng Tốc độ cao:** Tối ưu hóa truy vấn bảng xếp hạng (`ORDER BY xp DESC, streak DESC`) và tra cứu từ vựng đa điều kiện (Hán tự, Pinyin có dấu/không dấu, quy đổi `ü ↔ v/u`, nghĩa tiếng Việt). |
+| **📋 Phân Tích Nghiệp Vụ**<br>*(Business Analysis - BA)* | • **Chuẩn hóa Dữ liệu Danh mục (`data/curriculum_decks.json`):** Phân tích và cấu trúc hóa 930 đơn vị từ vựng thuộc 42 bài học (HSK 0–5), gắn kết chặt chẽ với 28 bộ thủ chiết tự, mẫu câu ngữ pháp và bài kiểm tra phân loại trình độ đầu vào (`Placement Test`).<br>• **Mô hình hóa Thuật toán Nghiệp vụ Định kỳ (`Anki SM-2`):** Thiết kế công thức tính toán độ khó (`easeFactor >= 1.3`), chu kỳ lặp lại (`intervalHours`) và thời điểm đến hạn ôn tập (`nextReviewAt`) độc lập theo 4 kỹ năng (*Đọc, Viết, Nghe, Phát âm*) cùng báo cáo thống kê tiến độ 7 ngày liên tiếp. |
+| **🚀 Triển Khai & Kiểm Định Chất Lượng**<br>*(Implementation & QA)* | • **Đóng gói Vận hành Tức thì (Zero-Dependency):** Nhờ sử dụng 100% mô-đun gốc của Node.js 22.5+, việc triển khai tại máy khách hàng không cần cài đặt thư viện ngoài (`npm install` = 0 gói phụ thuộc), đi kèm kịch bản khởi chạy nhanh `start_game.bat` trên Windows và `Dockerfile` chuẩn Alpine.<br>• **Công cụ Kiểm định Toàn vẹn Dữ liệu (`npm run audit` & `npm test`):** Tự động rà soát tính hợp lệ của toàn bộ 930 từ vựng, kiểm tra cú pháp 17 mô-đun và chạy kịch bản kiểm thử tích hợp API/SQLite tự động. |
 
 ---
 
@@ -174,6 +197,9 @@ docker run -d -p 8088:8088 --name hsk-academy hsk-cosmic-academy
 
 ---
 
-## 📄 Giấy Phép (License)
+<div align="center">
 
-Dự án được phân phối dưới giấy phép **MIT License**. Xem chi tiết hoặc tham khảo cách trình bày dự án này trong CV tại [CV_PORTFOLIO_GUIDE.md](CV_PORTFOLIO_GUIDE.md).
+**Tác giả:** **Kizakawa (Đức Vương)** • 📧 [vivyngocnghech@gmail.com](mailto:vivyngocnghech@gmail.com) • Giấy phép: **MIT License**  
+[⬅️ **Quay lại Trang chủ Portfolio GitHub (@Kizakawa)**](https://github.com/Kizakawa)
+
+</div>
