@@ -1,0 +1,36 @@
+# Secrets & Environment Variables
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+*.pickle
+client_secret*.json
+credentials*.json
+
+# Local SQLite Databases & Server Runtime Cache
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+storage/
+logs/
+temp/
+output/
+
+# Local Reference Media & Heavy Textbooks
+Giáo trình/
+*.pdf
+*.mp4
+*.mov
+*.mkv
+
+# Dependencies & OS Artifacts
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

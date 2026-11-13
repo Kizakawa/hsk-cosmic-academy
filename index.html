@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK Cosmic Academy — Nền Tảng Học Tiếng Trung Toàn Diện (HSK 0–5, Chiết Tự, Luyện Viết, SM-2 & Game Phản Xạ)</title>
+    <meta name="description" content="Học tiếng Trung hiệu quả từ con số 0 đến HSK 5: Bài giảng Chiết tự 28 Bộ thủ, Ngữ pháp, Hội thoại, Luyện viết ô chữ Điền, Chấm phát âm Mic, Thẻ nhớ SM-2 và Game Bắn Từ Vựng Vũ Trụ." />
+    <meta name="keywords" content="học tiếng trung, HSK 1, HSK 2, HSK 3, HSK 4, giáo trình hán ngữ, luyện viết chữ hán, flashcard SM-2, game bắn từ vựng tiếng trung" />
+    <meta name="theme-color" content="#050716" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- OpenGraph & Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:title" content="HSK Cosmic Academy — Học Tiếng Trung Toàn Diện HSK 0–5" />
+    <meta property="og:description" content="Nền tảng học tiếng Trung 4-trong-1: Bài giảng Chiết tự & Ngữ pháp, Luyện viết & Phát âm Mic, Ôn tập SM-2 Anki, và Game Bắn Từ Vũ Trụ." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HSK Cosmic Academy — Học Tiếng Trung Toàn Diện" />
+
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛸</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/academy.css" />
+
+    <!-- Structured Data (JSON-LD) for Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalApplication",
+      "name": "HSK Cosmic Academy",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web, Windows, macOS, Android, iOS",
+      "inLanguage": ["vi", "zh-CN"],
+      "educationalLevel": "HSK 1 - HSK 5",
+      "description": "Nền tảng học tiếng Trung tích hợp bài giảng chiết tự bộ thủ, ngữ pháp, hội thoại, luyện viết chữ Hán, thẻ nhớ SM-2 và game bắn từ vựng phản xạ.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "VND" }
+    }
+    </script>
+</head>
+<body class="academy-mode-active">
+    <!-- Top Unified Navigation & Decluttered HUD -->
+    <header class="top-hud" role="banner">
+        <div class="hud-left">
+            <!-- 5 Core Platform Navigation Spaces -->
+            <nav class="platform-nav" aria-label="Điều hướng nền tảng học tập">
+                <button id="nav-tab-hub" class="nav-tab-btn active" data-nav-view="hub" title="Trang chủ lộ trình & Kiểm tra trình độ">
+                    <span>🏠</span><span class="nav-label">Học Viện</span>
+                </button>
+                <button id="nav-tab-lesson" class="nav-tab-btn" data-nav-view="lesson" title="Bài giảng Từ vựng, Chiết tự, Ngữ pháp & Hội thoại">
+                    <span>📖</span><span class="nav-label">Bài Giảng</span>
+                </button>
+                <button id="nav-tab-practice" class="nav-tab-btn" data-nav-view="practice" title="Phòng luyện 5 kỹ năng: SM-2, Tập viết, Ghép từ, Điền câu, Xếp câu">
+                    <span>🎯</span><span class="nav-label">Luyện Tập</span>
+                </button>
+                <button id="nav-tab-dict" class="nav-tab-btn" data-nav-view="dictionary" title="Từ điển HSK 0-5 & Bảng 28 Bộ thủ">
+                    <span>🔎</span><span class="nav-label">Từ Điển</span>
+                </button>
+                <button id="nav-tab-shooter" class="nav-tab-btn" data-nav-view="shooter" title="Game Bắn Từ Vựng Phản Xạ Vũ Trụ">
+                    <span>🛸</span><span class="nav-label">Bắn Từ</span>
+                </button>
+            </nav>
+
+            <!-- Shooter-Specific Quick Lesson Picker -->
+            <button id="btn-open-units" class="btn-back-unit shooter-only-ui" title="Chọn cấp độ HSK, Chế độ chơi & Màn chơi">
+                <span>📚</span>
+                <span>Chọn Màn</span>
+            </button>
+            <button id="btn-study-deck" class="btn-study-highlight shooter-only-ui" title="Xem nhanh Flashcard bài đang bắn">
+                <span>🃏</span>
+                <span>Xem Từ</span>
+            </button>
+            <div class="hud-title-group shooter-only-ui">
+                <span class="hud-main-title">Bắn Từ Phản Xạ</span>
+                <span id="hud-subtitle-text" class="hud-subtitle">🔤 Nhìn Hán tự đang rơi ➔ Gõ Pinyin để bắn</span>
+            </div>
+        </div>
+
+        <!-- Center Stage Pill (Visible in Space Shooter Mode) -->
+        <div class="hud-center shooter-only-ui">
+            <button id="stage-pill-btn" class="stage-pill" title="Nhấn để đổi Bài học hoặc Chế độ bắn">
+                <span class="book-icon">📖</span>
+                <span id="hud-stage-label">Màn 1/15 • Bài 1 (Quyển 1)</span>
+            </button>
+            <span id="hud-word-progress" class="stage-progress-pill">0/13 từ</span>
+        </div>
+
+        <!-- Right Controls: Clean Global Profile + Collapsible Shooter Settings Drawer -->
+        <div class="hud-right">
+            <div class="stat-chip shooter-only-ui" title="Điểm số">
+                <span>Điểm:</span>
+                <strong id="hud-score">0</strong>
+            </div>
+            <div class="stat-chip shooter-only-ui" title="Chuỗi gõ đúng liên tiếp">
+                <span>Combo:</span>
+                <strong id="hud-combo">x0</strong>
+            </div>
+            <div class="stat-chip shooter-only-ui" title="Độ chính xác">
+                <span>Chính xác:</span>
+                <strong id="hud-accuracy">100%</strong>
+            </div>
+
+            <button id="btn-peek-word" class="hud-btn shooter-only-ui" title="Phím tắt Tab: Hiện gợi ý đáp án / Đổi mục tiêu">
+                <span>🔍</span>
+            </button>
+            <button id="btn-pause" class="hud-btn shooter-only-ui" title="Tạm dừng / Tiếp tục" aria-label="Tạm dừng">⏸️</button>
+
+            <div class="shooter-settings-wrap shooter-only-ui">
+                <button id="btn-shooter-settings-drawer" class="hud-btn mode-highlight-btn" title="Tùy chỉnh Chế độ bắn, Độ khó, Thanh điệu, Âm thanh & Bàn phím">
+                    <span>⚙️</span>
+                    <span>Tùy chỉnh</span>
+                </button>
+            </div>
+
+            <!-- Always-Visible Global Progress & Cloud Account Buttons -->
+            <button id="btn-open-hangar" class="hud-btn streak-pilot-btn" title="Xưởng Phi Thuyền, Tiến độ SRS & Chuỗi ngày học">
+                <span id="hud-streak-level">🔥 1 Ngày • Lv.1</span>
+            </button>
+            <button id="btn-open-account" class="hud-btn" title="Tài khoản Đám mây, Sao lưu dữ liệu, Bảng xếp hạng & Học liệu cộng đồng">
+                <span>👤</span>
+                <span>Tài Khoản</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Collapsible Shooter Tactical Settings Popover (Keeps HUD clean while preserving 100% controls) -->
+    <div id="shooter-settings-popover" class="shooter-settings-popover hidden" role="dialog" aria-label="Cài đặt chế độ bắn">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:13px;color:#7dd3fc;">⚙️ Cài Đặt Chiến Đấu & Hỗ Trợ Học</strong>
+            <span class="muted-note" style="font-size:11px;">Áp dụng tức thì</span>
+        </div>
+        <div class="popover-grid">
+            <button id="btn-mode-cycle" class="hud-btn mode-highlight-btn" title="Đổi chế độ bắn">
+                <span>🎯</span> <span>Theo Màn</span>
+            </button>
+            <button id="btn-difficulty-cycle" class="hud-btn" title="Đổi cấp độ khó dễ">
+                <span>🌱 Thư giãn</span>
+            </button>
+            <button id="btn-tone-mode" class="hud-btn" title="Bật/Tắt gõ số thanh điệu 1-4">
+                <span>🎵</span> <span>Dấu: Tự do</span>
+            </button>
+            <button id="btn-hint-mode" class="hud-btn" title="Bật/Tắt luôn hiện gợi ý dưới từ">
+                <span>🎯</span> <span>Gợi ý</span>
+            </button>
+            <button id="btn-speed-cycle" class="hud-btn" title="Tốc độ từ rơi">
+                <span>⚡</span> <span>0.85x</span>
+            </button>
+            <button id="btn-toggle-audio" class="hud-btn" title="Bật/Tắt âm thanh & nhạc nền">
+                <span>🔊</span>
+            </button>
+            <button id="btn-toggle-keyboard" class="hud-btn" title="Bật/Tắt Bàn phím cảm ứng">
+                <span>⌨️ Phím ảo</span>
+            </button>
+            <button id="btn-weak-words" class="hud-btn" title="Ôn tập các từ từng gõ sai">
+                <span>📓 Từ sai</span>
+                <span id="weak-words-count" class="count-badge">0</span>
+            </button>
+            <button id="btn-open-custom" class="hud-btn" style="grid-column: span 2;" title="Tự dán danh sách từ mới của bạn">
+                <span>➕</span> <span>Tự Tạo Màn Chơi Từ Vựng Riêng</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Scrollable Multi-Modal Learning Platform Shell (Hub, Lesson, Practice, Dictionary) -->
+    <main id="academy-main-shell" class="academy-shell" role="main" aria-label="Không gian học tập chính"></main>
+
+    <!-- Main Interactive Space Canvas -->
+    <canvas id="game-canvas" aria-label="Màn hình game bắn từ vựng tiếng Trung"></canvas>
+
+    <!-- Live Locked Target Floating Badge -->
+    <div id="locked-target-hud" class="locked-target-hud shooter-only-ui hidden"></div>
+
+    <!-- Bottom Center Turret Deck Label & Shield Bar -->
+    <div class="bottom-turret-hud shooter-only-ui">
+        <div id="hud-deck-name" class="deck-label-glow">HSK 1 • Giáo Trình Hán Ngữ Quyển 1 (Bài 1–15)</div>
+        <div id="hud-shields" class="shield-bar"></div>
+    </div>
+
+    <!-- Bottom Left Keyboard Shortcut Guide -->
+    <div class="shortcut-hint-bar shooter-only-ui">
+        <span><kbd>A</kbd>–<kbd>Z</kbd> Gõ Pinyin / Nghĩa để bắn</span>
+        <span><kbd>Space</kbd> Nghe phát âm</span>
+        <span><kbd>Tab</kbd> Gợi ý / Đổi mục tiêu</span>
+        <span><kbd>Esc</kbd> Bỏ khóa</span>
+        <span>🖱️ Chạm vào từ để khóa</span>
+    </div>
+
+    <!-- On-Screen Virtual Touch Keyboard -->
+    <div id="touch-keyboard" class="touch-keyboard hidden" aria-label="Bàn phím cảm ứng">
+        <div class="tk-row tk-actions-row">
+            <button type="button" class="tk-key tk-action" data-tk-key=" ">🔊 Nghe</button>
+            <button type="button" class="tk-key tk-action" data-tk-key="Tab">💡 Gợi ý / Đổi</button>
+            <button type="button" class="tk-key tk-tone" data-tk-key="1">1 (ā)</button>
+            <button type="button" class="tk-key tk-tone" data-tk-key="2">2 (á)</button>
+            <button type="button" class="tk-key tk-tone" data-tk-key="3">3 (ǎ)</button>
+            <button type="button" class="tk-key tk-tone" data-tk-key="4">4 (à)</button>
+            <button type="button" class="tk-key tk-action tk-danger" data-tk-key="Escape">✕ Bỏ khóa</button>
+        </div>
+        <div class="tk-row">
+            <button type="button" class="tk-key" data-tk-key="q">Q</button>
+            <button type="button" class="tk-key" data-tk-key="w">W</button>
+            <button type="button" class="tk-key" data-tk-key="e">E</button>
+            <button type="button" class="tk-key" data-tk-key="r">R</button>
+            <button type="button" class="tk-key" data-tk-key="t">T</button>
+            <button type="button" class="tk-key" data-tk-key="y">Y</button>
+            <button type="button" class="tk-key" data-tk-key="u">U</button>
+            <button type="button" class="tk-key" data-tk-key="i">I</button>
+            <button type="button" class="tk-key" data-tk-key="o">O</button>
+            <button type="button" class="tk-key" data-tk-key="p">P</button>
+        </div>
+        <div class="tk-row">
+            <button type="button" class="tk-key" data-tk-key="a">A</button>
+            <button type="button" class="tk-key" data-tk-key="s">S</button>
+            <button type="button" class="tk-key" data-tk-key="d">D</button>
+            <button type="button" class="tk-key" data-tk-key="f">F</button>
+            <button type="button" class="tk-key" data-tk-key="g">G</button>
+            <button type="button" class="tk-key" data-tk-key="h">H</button>
+            <button type="button" class="tk-key" data-tk-key="j">J</button>
+            <button type="button" class="tk-key" data-tk-key="k">K</button>
+            <button type="button" class="tk-key" data-tk-key="l">L</button>
+        </div>
+        <div class="tk-row">
+            <button type="button" class="tk-key" data-tk-key="z">Z</button>
+            <button type="button" class="tk-key" data-tk-key="x">X</button>
+            <button type="button" class="tk-key" data-tk-key="c">C</button>
+            <button type="button" class="tk-key" data-tk-key="v">V</button>
+            <button type="button" class="tk-key" data-tk-key="b">B</button>
+            <button type="button" class="tk-key" data-tk-key="n">N</button>
+            <button type="button" class="tk-key" data-tk-key="m">M</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="game-toast" class="game-toast hidden" role="status" aria-live="polite"></div>
+
+    <!-- MODAL 1: Choose HSK Deck, Game Mode, Difficulty & Unit -->
+    <div id="modal-units" class="modal-backdrop hidden">
+        <div class="modal-card modal-wide">
+            <div class="modal-header">
+                <h3>📚 Lộ Trình Học & Chọn Màn Chơi (Giáo Trình Hán Ngữ & HSK)</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-mode-diff-bar" class="modal-quick-bar"></div>
+                <div id="deck-tabs-container" class="deck-tabs"></div>
+                <div id="unit-cards-grid" class="unit-grid"></div>
+                <div class="form-group" style="margin-top: 8px;">
+                    <div style="font-size: 13px; font-weight: 600; color: #cbd5e1;">✨ Bộ Từ Vựng Cá Nhân Của Bạn</div>
+                    <div id="custom-units-list"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ghost" data-close-modal>Đóng & Tiếp tục</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Pre-Game Study Deck & Interactive Flashcard Carousel -->
+    <div id="modal-study-deck" class="modal-backdrop hidden">
+        <div class="modal-card modal-wide">
+            <div class="modal-header">
+                <h3 id="study-modal-title">📖 Phòng Học Từ Vựng & Flashcard Trước Trận Đấu</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="flashcard-stage">
+                    <div id="study-flashcard" class="flashcard-box" title="Nhấn vào thẻ để nghe phát âm tiếng Trung">
+                        <div class="fc-top-row">
+                            <span id="fc-counter" class="fc-counter-badge">Từ 1/15</span>
+                            <span id="fc-mastery-badge" class="fc-mastery-pill">⭐ Mới gặp</span>
+                        </div>
+                        <div id="fc-hanzi" class="fc-hanzi">你好</div>
+                        <div id="fc-pinyin" class="fc-pinyin">nǐ hǎo</div>
+                        <div id="fc-meaning" class="fc-meaning">Xin chào, chào bạn</div>
+                        <div class="fc-controls">
+                            <button id="btn-fc-prev" class="btn-ghost btn-sm" type="button">⏮️ Từ trước</button>
+                            <button id="btn-fc-speak" class="btn-primary btn-sm" type="button">🔊 Nghe phát âm</button>
+                            <button id="btn-fc-next" class="btn-ghost btn-sm" type="button">Từ tiếp ⏭️</button>
+                        </div>
+                    </div>
+
+                    <div class="boss-preview-box">
+                        <div class="boss-preview-tag">🛸 BOSS BÀI KHÓA CUỐI MÀN (CÂU GIAO TIẾP TRỌNG TÂM)</div>
+                        <div id="study-boss-hanzi" class="boss-preview-hanzi">你好</div>
+                        <div id="study-boss-pinyin" class="boss-preview-pinyin">nǐ hǎo</div>
+                        <div id="study-boss-meaning" class="boss-preview-meaning">Xin chào bạn</div>
+                        <button id="btn-speak-boss" class="btn-ghost btn-sm" type="button" style="margin-top:8px;">🔊 Nghe câu Boss</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div style="font-size: 13px; font-weight: 600; color: #cbd5e1;">📋 Toàn bộ từ vựng trong bài (Nhấn vào bất kỳ từ nào để nghe phát âm & xem mức độ thuộc SRS):</div>
+                    <div id="study-words-grid" class="review-words-grid study-grid-tall"></div>
+                </div>
+            </div>
+            <div class="modal-footer study-footer-actions">
+                <button class="btn-ghost" data-close-modal>Đóng</button>
+                <button id="btn-study-launch-pinyin" class="btn-primary">🔤 Bắn Pinyin Bài Này</button>
+                <button id="btn-study-launch-meaning" class="btn-primary btn-emerald">🇻🇳 Bắn Nghĩa Bài Này</button>
+                <button id="btn-study-launch-listening" class="btn-primary btn-purple">🎧 Luyện Nghe Bài Này</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Hangar Ship Skins & SRS Mastery Dashboard -->
+    <div id="modal-hangar" class="modal-backdrop hidden">
+        <div class="modal-card modal-wide">
+            <div class="modal-header">
+                <h3>🚀 Xưởng Phi Thuyền & Hồ Sơ Năng Lực Tiếng Trung (SRS)</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="summary-stats-grid">
+                    <div class="summary-stat-box">
+                        <span class="label">Chuỗi Ngày Học</span>
+                        <span id="hangar-streak" class="val" style="color:#fb923c;">🔥 1 ngày</span>
+                    </div>
+                    <div class="summary-stat-box">
+                        <span class="label">Cấp Độ Phi Công</span>
+                        <span id="hangar-level" class="val" style="color:#facc15;">Lv.1 (0 XP)</span>
+                    </div>
+                    <div class="summary-stat-box">
+                        <span class="label">Từ Đã Thành Thạo (SRS)</span>
+                        <span id="hangar-mastered" class="val" style="color:#4ade80;">0 từ</span>
+                    </div>
+                    <div class="summary-stat-box">
+                        <span class="label">Boss Đã Chinh Phục</span>
+                        <span id="hangar-bosses" class="val" style="color:#c084fc;">0 Boss</span>
+                    </div>
+                </div>
+
+                <div class="quest-card">
+                    <div class="quest-header">
+                        <strong>🎯 Nhiệm Vụ Hàng Ngày: Ôn luyện & chinh phục 25 từ vựng tiếng Trung</strong>
+                        <span id="hangar-quest-text" class="quest-badge">0 / 25 từ</span>
+                    </div>
+                    <div class="quest-bar-track">
+                        <div id="hangar-quest-fill" class="quest-bar-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div style="font-size: 13px; font-weight: 600; color: #cbd5e1;">🛸 Chọn Chiến Cơ & Màu Đạn Laser Của Bạn:</div>
+                    <div id="hangar-skins-grid" class="skins-grid"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" data-close-modal>✅ Hoàn tất</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Add Custom Vocabulary Unit -->
+    <div id="modal-custom-vocab" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>➕ Tự Tạo Màn Chơi Từ Vựng Của Riêng Bạn</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="custom-unit-title">Tên bài học / Unit (Ví dụ: Từ mới bài 15, Từ vựng chuyên ngành...)</label>
+                    <input id="custom-unit-title" type="text" class="form-input" placeholder="Nhập tên Unit của bạn..." />
+                </div>
+                <div class="form-group">
+                    <label for="custom-unit-mode">Chế độ bắn mặc định cho màn này:</label>
+                    <select id="custom-unit-mode" class="form-input">
+                        <option value="pinyin">🔤 Nhìn Hán tự ➔ Gõ Pinyin</option>
+                        <option value="meaning">🇻🇳 Nhìn Hán tự + Pinyin ➔ Gõ Nghĩa tiếng Việt</option>
+                        <option value="listening">🎧 Nghe phát âm ➔ Gõ Pinyin</option>
+                        <option value="mixed">🔄 Kết hợp xen kẽ Pinyin & Nghĩa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="custom-unit-words">Danh sách từ vựng (Mỗi dòng 1 từ theo cú pháp: Chữ Hán - Pinyin - Nghĩa tiếng Việt)</label>
+                    <textarea id="custom-unit-words" rows="7" class="form-textarea" placeholder="球迷 - qiúmí - Người hâm mộ&#10;签证 - qiānzhèng - Thị thực&#10;庆祝 - qìngzhù - Kỷ niệm&#10;轻松 - qīngsōng - Thư giãn"></textarea>
+                    <span class="muted-note">💡 Mẹo: Bạn có thể nhập Pinyin/Nghĩa có dấu hoặc không dấu đều được.</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ghost" data-close-modal>Hủy</button>
+                <button id="btn-save-custom-unit" class="btn-primary">🚀 Lưu & Bắt đầu ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: Unit Complete & Vocabulary Review -->
+    <div id="modal-unit-complete" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>🎉 Hoàn Thành Màn Chơi Xuất Sắc!</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                    <p id="summary-unit-title" class="muted-note" style="font-size: 14px; font-weight: 600; color: #38bdf8;"></p>
+                    <div id="summary-stars-badge" class="summary-stars">⭐⭐⭐</div>
+                </div>
+                <div class="summary-stats-grid">
+                    <div class="summary-stat-box">
+                        <span class="label">Tổng Điểm</span>
+                        <span id="summary-score" class="val">0</span>
+                    </div>
+                    <div class="summary-stat-box">
+                        <span class="label">Độ Chính Xác</span>
+                        <span id="summary-accuracy" class="val">100%</span>
+                    </div>
+                    <div class="summary-stat-box">
+                        <span class="label">Tốc Độ Gõ</span>
+                        <span id="summary-cpm" class="val">0</span>
+                    </div>
+                    <div class="summary-stat-box">
+                        <span class="label">Max Combo</span>
+                        <span id="summary-combo" class="val">x0</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div style="font-size: 13px; font-weight: 600; color: #cbd5e1;">📖 Tổng kết các từ vừa chinh phục (Nhấn 🔊 để nghe lại phát âm chuẩn):</div>
+                    <div id="summary-words-list" class="review-words-grid"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-replay-unit" class="btn-ghost">🔄 Chơi lại màn này</button>
+                <button id="btn-next-unit" class="btn-primary">⏭️ Màn tiếp theo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: Shield Depleted / Game Over -->
+    <div id="modal-game-over" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>🛡️ Lá Chắn Phòng Thủ Đã Cạn!</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="muted-note">Bạn đã bắn hạ được <strong id="gameover-progress" style="color: #4ade80;">0/0 từ</strong> trong màn này. Dưới đây là các từ vừa lọt lưới cần lưu ý:</p>
+                <div id="gameover-missed-list" class="review-words-grid"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-retry-gameover" class="btn-ghost">🔄 Chơi lại từ đầu</button>
+                <button id="btn-continue-shields" class="btn-primary">⚡ Hồi đầy khiên & Bắn tiếp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 7: Cloud Account, JSON Backup, Leaderboard & Community Shared Decks -->
+    <div id="modal-community" class="modal-backdrop hidden">
+        <div class="modal-card modal-wide">
+            <div class="modal-header">
+                <h3>☁️ Tài Khoản Học Viên, Sao Lưu Đám Mây & Cộng Đồng HSK</h3>
+                <button class="btn-close" data-close-modal aria-label="Đóng">&times;</button>
+            </div>
+            <div id="community-modal-body" class="modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn-ghost" data-close-modal>Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modular Application Scripts -->
+    <script src="js/data/vocabDatabase.js"></script>
+    <script src="js/data/curriculumMeta.js"></script>
+    <script src="js/services/storageService.js"></script>
+    <script src="js/services/apiClient.js"></script>
+    <script src="js/audio/soundEngine.js"></script>
+    <script src="js/engine/entities.js"></script>
+    <script src="js/engine/gameEngine.js"></script>
+    <script src="js/learning/academyHub.js"></script>
+    <script src="js/learning/lessonStudio.js"></script>
+    <script src="js/learning/practiceArena.js"></script>
+    <script src="js/learning/dictionaryView.js"></script>
+    <script src="js/learning/communityModal.js"></script>
+    <script src="js/ui/uiController.js"></script>
+    <script src="js/qa/gameQaSuite.js"></script>
+</body>
+</html>

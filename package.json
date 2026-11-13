@@ -1,0 +1,26 @@
+{
+  "name": "hsk-cosmic-academy",
+  "version": "2.0.0",
+  "description": "Nền tảng học tiếng Trung toàn diện HSK 0-5 tích hợp Bài giảng Chiết tự, Ngữ pháp, Hội thoại, Luyện viết, Flashcard SM-2, Cloud Sync & Game Bắn Từ Vựng Vũ Trụ",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "export-data": "node scripts/export_vocab_json.js",
+    "audit": "python \".agents/skills/browser-mcp-game-qa/scripts/offline_game_audit.py\"",
+    "test": "node scripts/test_platform_e2e.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "keywords": [
+    "chinese",
+    "hsk",
+    "mandarin",
+    "spaced-repetition",
+    "sm2",
+    "education",
+    "pwa",
+    "typing-game"
+  ],
+  "license": "MIT"
+}
