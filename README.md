@@ -199,7 +199,7 @@ docker run -d -p 8088:8088 --name hsk-academy hsk-cosmic-academy
 
 <div align="center">
 
-**Tác giả:** **Phan Quốc Bảo (Kizakawa) — Sinh viên ngành Khoa học máy tính** • 📧 [vivyngocnghech@gmail.com](mailto:vivyngocnghech@gmail.com) • Giấy phép: **MIT License**  
+**Tác giả:** **Phan Quốc Bảo (Kizakawa) — Sinh viên ngành Khoa học máy tính** • 📧 [phanquocbao.vp@gmail.com](mailto:phanquocbao.vp@gmail.com) • Giấy phép: **MIT License**  
 [⬅️ **Quay lại Trang chủ Portfolio GitHub (@Kizakawa)**](https://github.com/Kizakawa)
 
 </div>
